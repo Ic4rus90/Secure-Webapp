@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block head %} <Title> Profile </Title>{% endblock %}
+<head>
+    <link href="/static/css/profile.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+{% block content %}
+<img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" alt="Profile Picture" class="profile-picture">
+    <label for="title" class="welcome-message">Welcome back {{ user.username }}!</label>
+    <br>
+    <p class="boats-paragraph">
+        <span>You are succesfully logged in, go enjoy some boats!🚢</span>
+    <p>
+    <div class="profile-container">
+        <a href="/edit_profile/" class="btn btn-dark">Edit profile</a>
+        <br>
+        <br>
+        <a href="/logout" class="btn btn-dark">Log out</a>
+    </div>
+
+{% endblock %}

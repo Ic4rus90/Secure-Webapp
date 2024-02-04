@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block title %} Profile {% endblock %}
+
+{% block content %}
+<head>
+    <link href="/static/css/boat.css" rel="stylesheet">
+</head>
+
+<body>
+    <main class="container mt-4">
+        <div class="row">
+
+            <!-- Left side -->
+            <div class="col-md-6">
+                <img data-image="boat" src="{{ boat.image_url }}" alt="Boat Image" class="img-fluid">
+            </div>
+
+            <!-- Right side -->
+            <div class="col-md-6">
+                <div class="product-description">
+                    <h1>{{ boat.make }}</h1>
+                    <p>Type: {{ boat.type }}</p>
+                    <p>Length: {{ boat.foot|int }}ft</p>
+                    <p>Year: {{ boat.year|int }}</p>
+                    <p>{{ boat.description }}</p>
+                    <p>Price: {{ boat.price|int }}$</p>
+
+
+
+                    <form method="POST" action="{{ url_for('main.add_review') }}">
+                        {{ form.csrf_token }}
+                            <div class="form-group star-rating">
+                                {% for value, label in form.stars.choices %}
+                                    <input type="radio" id="star{{ value }}" name="stars" value="{{ value }}" {% if value|string == form.stars.data|string %}checked{% endif %}/>
+                                    <label for="star{{ value }}" title="{{ label }} stars"></label>
+                                {% endfor %}
+                            </div>
+                            <div class="form-group">
+                                {{ form.content.label(class="form-label") }}
+                                {{ form.content(class="form-control", placeholder="Put your review here", rows="4") }}
+                            </div>
+                            <input type="hidden" name="boat_id" value="{{ boat.id }}">
+                            <button type="submit" class="btn btn-dark">Submit review</button>
+                    </form>
+
+                    <div class="review mt-4">
+                        <h3>Reviews</h3>
+                        {% if review is not none %}
+                            {% for review in reviews %}
+                                <div class="review-container">
+                                    <p class="review-rating golden-star" >{{ review.stars * '★' }}</p>
+                                    <h4 class="review-username">{{ review.username }}</h4>
+                                    <span class="review-timestamp">{{ review.timestamp }}</span>
+                                    <p class="review-content">{{ review.content }}</p>
+                                </div>
+                            {% endfor %}
+                        {% else %}
+                            <p>This boat has no reviews yet</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+{% endblock %}
+

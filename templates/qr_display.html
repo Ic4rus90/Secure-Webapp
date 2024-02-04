@@ -1,0 +1,5 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Scan this QR Code with your Authenticator App</h2>
+<img src="{{ qr_data_uri }}" alt="TOTP QR Code">
+{% endblock %}

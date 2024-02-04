@@ -1,0 +1,35 @@
+{% block content %}
+    <h1>{% block title %} SEE OUR AMAZING BOAT OFFERS {% endblock %}</h1>
+    <html>
+    <body>
+        <h1>List of available boats, they look way nicer if you log in muhahahahah</h1>
+        <table>
+            <tr>
+                <th>Type</th>
+                <th>Make</th>
+                <th>Foot</th>
+                <th>Year</th>
+                <th>Engine Make</th>
+                <th>Engine HP</th>
+                <th>Price</th>
+                <th>image</th>
+            </tr>
+            {% if boats is not none %}
+                {% for boat in boats %}
+                <tr>
+                    <td>{{ boat.type }}</td>
+                    <td>{{ boat.make }}</td>
+                    <td>{{ boat.foot }}</td>
+                    <td>{{ boat.year }}</td>
+                    <td>{{ boat.engineMake }}</td>
+                    <td>{{ boat.engineHp }}</td>
+                    <td>{{ boat.price }}</td>
+                    <td>{{ boat.image_url }}</td>
+                </tr>
+                {% endfor %}
+            {% endif %}
+        </table>
+        <a href="/add_boat/" class="btn btn-primary">Add a new boat</a>
+    </body>
+    </html>
+{% endblock %}

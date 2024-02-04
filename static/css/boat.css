@@ -1,0 +1,64 @@
+.review-container {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #ffffff;
+}
+
+.review-username {
+    font-size: 1em;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.review-timestamp {
+    font-size: 0.85em;
+    color: #888;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.review-content {
+    margin-top: 10px;
+    color: #555;
+}
+
+.star-rating {
+    margin-bottom: 20px;
+}
+
+.star-rating {
+    direction: rtl;
+}
+
+.star-rating input[type="radio"] {
+    display: none;
+}
+
+.star-rating label {
+    font-size: 24px;
+    padding: 5px;
+    cursor: pointer;
+    color: lightgray;
+    transition: color 0.2s;
+}
+
+.star-rating label:before {
+    content: '☆';
+    display: inline-block;
+}
+
+.star-rating input[type="radio"]:checked ~ label,
+.star-rating input[type="radio"]:checked ~ label ~ label {
+    color: orange;
+}
+
+.star-rating input[type="radio"]:checked ~ label::before,
+.star-rating input[type="radio"]:checked ~ label ~ label::before {
+    content: '★';
+}
+
+.golden-star {
+    color: orange;
+}

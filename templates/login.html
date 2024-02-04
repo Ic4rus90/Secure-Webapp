@@ -1,0 +1,24 @@
+{% extends "base_signed_out.html" %}
+
+{% block title %} <title> Login </title> {% endblock %}
+
+{% block body %}
+        <p class="text-center">Please sign in</p>
+        <form method="POST" action="{{ url_for('auth.login') }}">
+            {{ form.csrf_token }}
+            <div class="form-group">
+                {{ form.username.label(class="form-label") }}
+                {{ form.username(class="form-control") }}
+            </div>
+            <div class="form-group">
+                {{ form.password.label(class="form-label") }}
+                {{ form.password(type="password", class="form-control") }}
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-dark">Log in</button>
+            </div>
+        </form>
+
+        <p class="text-center">Don't have an account? <a href="/register/" class="btn btn-dark">Register</a></p>
+        <!--<a href="{{ url_for('auth.authorize') }}" class="btn btn-dark">Log in with Google</a>-->
+{% endblock %}

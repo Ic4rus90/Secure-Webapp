@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block head %}<title> Add Boat </title>{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <form method="post" action="{{ url_for('main.add_boat') }}">
+        {{ form.csrf_token }}
+        <div class="mb-3">
+            {{ form.boat_type.label(class="form-label") }}
+            {{ form.boat_type(class="form-control", placeholder="Sailboat, Yacht, etc.") }}
+        </div>
+        <div class="mb-3">
+            {{ form.make.label(class="form-label") }}
+            {{ form.make(class="form-control", placeholder="Bayliner, Sunseeker, etc.") }}
+        </div>
+        <div class="mb-3">
+            {{ form.length.label(class="form-label") }}
+            {{ form.length(class="form-control", placeholder="Boat length in feet") }}
+        </div>
+        <div class="mb-3">
+            {{ form.year.label(class="form-label") }}
+            {{ form.year(class="form-control", placeholder="YYYY, e.g. 2022") }}
+        </div>
+        <div class="mb-3">
+            {{ form.engine_make.label(class="form-label") }}
+            {{ form.engine_make(class="form-control", placeholder="Yamaha, Mercury, etc.") }}
+        </div>
+        <div class="mb-3">
+            {{ form.engine_hp.label(class="form-label") }}
+            {{ form.engine_hp(class="form-control", placeholder="Engine's horsepower") }}
+        </div>
+        <div class="mb-3">
+            {{ form.price.label(class="form-label") }}
+            {{ form.price(class="form-control", placeholder="Enter the boat's price") }}
+        </div>
+        <div class="mb-3">
+            {{ form.description.label(class="form-label") }}
+            {{ form.description(class="form-control", placeholder="Provide a brief description of the boat") }}
+        </div>
+        <div class="mb-3">
+            {{ form.image_url.label(class="form-label") }}
+            {{ form.image_url(class="form-control", placeholder="Enter the link to the boat's image") }}
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-dark">Submit</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

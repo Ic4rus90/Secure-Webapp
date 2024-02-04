@@ -1,0 +1,38 @@
+{% extends "base_signed_out.html" %}
+
+{% block head %} <title>Register</title>  {% endblock %}
+
+{% block body %}
+        <p class="text-center">Please register</p>
+        <form method="POST" action="{{ url_for('auth.register') }}">
+            {{ form.csrf_token }}
+            <div class="mb-3">
+                {{ form.username.label(class="form-label") }}
+                {{ form.username(class="form-control") }}
+            </div>
+            <div class="mb-3">
+                {{ form.phone.label(class="form-label") }}
+                {{ form.phone(class="form-control") }}
+            </div>
+            <div class="mb-3">
+                {{ form.email.label(class="form-label") }}
+                {{ form.email(class="form-control") }}
+            </div>
+            <div class="mb-3">
+                {{ form.password.label(class="form-label") }}
+                {{ form.password(type="password", class="form-control") }}
+            </div>
+            <div class="mb-3">
+                {{ form.password2.label(class="form-label") }}
+                {{ form.password2(type="password", class="form-control") }}
+                {% if form.errors.password2 %}
+                <div class="alert alert-danger" role="alert">
+                    Passwords must match
+                </div>
+            {% endif %}
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-dark">Register</button>
+            </div>
+        </form>
+{% endblock %}

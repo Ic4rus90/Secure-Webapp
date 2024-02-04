@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block head %} <Title> Edit Profile </Title>{% endblock %}
+<head>
+    <link href="/static/css/profile.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+{% block content %}
+        <div class="row">
+            <div class = "form-container">
+                <form method="POST" action="{{ url_for('auth.edit_username') }}">
+                    {{ username_form.csrf_token }}
+                    <div class="mb-3">
+                        <h5>Change username</h5>
+                        {{ username_form.username(Placeholder="New username") }}
+                    </div>
+                    <input type="submit" value="Change username" class="btn btn-dark">
+                </form>
+            </div>
+            <div class = "form-container">
+                <form method="POST" action="{{ url_for('auth.edit_phone') }}">
+                    {{ phone_form.csrf_token }}
+                    <div class="mb-3">
+                        <h5>Change phone number</h5>
+                        <!--{{ phone_form.phone.label(class="form-label") }}-->
+                        {{ phone_form.phone(Placeholder="New phone number") }}
+                    </div>
+                    <input type="submit" value="Change phone number" class="btn btn-dark">
+                </form>
+            </div>
+            {% if user.is_oauth == 0 %}
+            <div class = "form-container">
+                <form method="POST" action="{{ url_for('auth.edit_password') }}">
+                    {{ password_form.csrf_token }}
+                    <div class="mb-3">
+                        <h5>Change password</h5>
+                    </div>
+                    <div class="mb-3">
+                        {{ password_form.old_password(Placeholder="Old password") }}
+                    </div>
+                    <div class="mb-3">
+                        {{ password_form.new_password(Placeholder="New password") }}
+                    </div>
+                    <div class="mb-3">
+                        {{ password_form.new_password2(Placeholder="Repeat new password") }}
+                    </div>
+                    <input type="submit" value="Change password" class="btn btn-dark">
+                </form>
+            </div>
+            {% endif %}
+        </div>
+
+{% endblock %}

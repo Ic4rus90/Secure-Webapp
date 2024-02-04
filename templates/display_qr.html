@@ -1,0 +1,14 @@
+{% extends "base_signed_out.html" %}
+{% block title %} <title>QR</title> {%endblock %}
+
+{% block body %}
+<p class="text-center">Scan the QR code with your authenticator app</p>
+
+<div class="text-center qr-container">
+    <img width="250" height="250" src="{{ qr_data_uri }}" alt="QR Code" />
+</div>
+
+<div class="text-center">
+    <a href="/login">Go back to log in</a>
+</div>
+{% endblock %}

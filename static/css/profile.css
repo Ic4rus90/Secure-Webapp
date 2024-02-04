@@ -1,0 +1,105 @@
+.profile-container {
+    max-width: 250px;
+    padding: 20px;
+    text-align: left;
+}
+
+.profile-container h2 {
+    font-size: 24px;
+    color: #3b3b3b;
+    margin-bottom: 20px;
+}
+
+.row {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.form-container {
+    margin: 10px;
+}
+
+.user-info {
+    margin-bottom: 20px;
+}
+
+.profile-picture {
+    width: 150px; 
+    height: 150px; 
+    border-radius: 30%; 
+    position: absolute;
+    border: 3px solid #000000;
+    top: 65px;
+    left: 12px;
+}
+
+.user-info h1 {
+    color: #333;
+    margin: 10px 0;
+}
+
+.welcome-message {
+    font-size: 30px;
+    color: #3498db;
+    text-align: center;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.boats-paragraph {
+    font-size: 18px;
+    color: #3498db;
+    text-align: center;
+}
+
+.form-label {
+    text-transform: capitalize;
+    font-weight: bold;
+    color: #555;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.btn-dark {
+    background-color: #4a9191;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.btn-dark:hover {
+    background-color: #555;
+}
+
+.btn-logout {
+    background-color: #4a9191;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.btn-logout:hover {
+    background-color: #0056b3;
+}
+
+.footer {
+    text-align: center;
+    margin-top: 30px;
+    padding: 10px;
+    font-size: 14px;
+    color: #666;
+}

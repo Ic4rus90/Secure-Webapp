@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block head %} <Title> Boat Gallery </Title> {% endblock %}
+
+{% block content %}
+<head>
+    <script src="/static/scripts/boat_screen.js"></script>
+    <link href="/static/css/boat_screen.css" rel="stylesheet">
+    <title>Yes</title>
+</head>
+
+<body>
+    <div class="container">
+        {% for boat in boats %}
+        <div class="card">
+            <div class="card-image">
+                <!-- Do further research on this section, potentially make the whole card clickable -->
+                <img src="{{ boat.image_url }}" class="card-img-top" data-boat-id="{{ boat.id }}" alt="{{ boat.make }}">
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">{{boat.make}}</h5>
+                <p class="card-text">{{ boat.description }}</p>
+            </div>
+        </div>
+
+        {% endfor %}
+    </div>
+</body>
+
+{% endblock %}

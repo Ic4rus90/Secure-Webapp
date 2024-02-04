@@ -1,0 +1,70 @@
+{% block content %}
+    <h1 id="greeting">{% block title %} Add a New Boat {% endblock %}</h1>
+
+    <!--Example of xss vulnerability: http://127.0.0.1:5000/add_boat/?name=%<!--Example of xss vulnerability: http://127.0.0.1:5000/add_boat/?name=%3Ciframe%20width=%22560%22%20height=%22315%22%20src=%22https://www.youtube.com/embed/PtJ6yAGjsIs?si=1vszQic5k4mRIwel%22%3E%3C/iframe%3E    --> - 
+    <script>
+       var name = new URLSearchParams(document.location.search).get('name');
+       if (name !== 'null') {
+           document.getElementById('greeting').innerHTML = 'Hello ' + name + '!';
+       }
+   </script>
+
+    <form method="POST" action="/add_boat/">
+        <label for="title">Type?</label>
+        <br>
+        <input type="text" name="type"
+               placeholder="Boat type"
+               value="{{ request.form['type'] }}"></input>
+        <br>
+        <label for="title">Make</label>
+        <br>
+        <input type="text" name="make"
+               placeholder="What make?"
+               value="{{ request.form['make'] }}"></input>
+        <br>
+        <label for="title">Amount of foot?</label>
+        <br>
+        <input type="number" name="foot"
+               placeholder="How many feet are the boat?"
+               value="{{ request.form['foot'] }}"></input>
+        <br>
+        <label for="title">Year?</label>
+        <br>
+        <input type="number" name="year"
+               placeholder="What year?"
+               value="{{ request.form['year'] }}"></input>
+        <br>
+        <label for="title">Engine make?</label>
+        <br>
+        <input type="text" name="engineMake"
+               placeholder="Who is the engine make?"
+               value="{{ request.form['engineMake'] }}"></input>
+        <br>
+        <label for="title">Engine Hp?</label>
+        <br>
+        <input type="number" name="engineHp"
+               placeholder="what is the engine hp?"
+               value="{{ request.form['engineHp'] }}"></input>
+        <br>
+        <label for="title">What is the price?</label>
+        <br>
+        <input type="number" name="price"
+               placeholder="whats the price?"
+               value="{{ request.form['price'] }}"></input>
+        <br>
+        <label for="title">Boat description</label>
+        <br>
+        <input type="text" name="description"
+               placeholder="boat description"
+               value="{{ request.form['description'] }}"></input>
+        <br>
+        <label for="title">Image link</label>
+        <br>
+        <input type="text" name="image_url"
+               placeholder="picture link"
+               value="{{ request.form['image_url'] }}"></input>
+        <br>
+
+        <button type="submit">Submit</button>
+    </form>
+{% endblock %}
